@@ -13,10 +13,10 @@
 #include "stm32f10x.h"                  // Device header
 
 
-#define LED1_ON    (GPIO_ResetBits(GPIOB, GPIO_Pin_1))
-#define LED1_OFF    (GPIO_SetBits(GPIOB, GPIO_Pin_1))
-#define LED2_ON    (GPIO_ResetBits(GPIOC, GPIO_Pin_5))
-#define LED2_OFF    (GPIO_SetBits(GPIOC, GPIO_Pin_5))
+#define LED1_ON    (GPIO_ResetBits(GPIOA, GPIO_Pin_4))
+#define LED1_OFF    (GPIO_SetBits(GPIOA, GPIO_Pin_4))
+#define LED0_ON    (GPIO_ResetBits(GPIOC, GPIO_Pin_13))
+#define LED0_OFF    (GPIO_SetBits(GPIOC, GPIO_Pin_13))
 
 
 void LED_Init(void);

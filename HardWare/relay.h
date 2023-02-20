@@ -13,9 +13,9 @@
 #include "stm32f10x.h"                  // Device header
 #include "Systic.h"
 
-#define RELAY_CLK       RCC_APB2Periph_GPIOB
-#define RELAY_PORT	    GPIOB	             //定义IO接口所在组
-#define RELAY_PIN       GPIO_Pin_7
+#define RELAY_CLK       RCC_APB2Periph_GPIOA
+#define RELAY_PORT	    GPIOA	             //定义IO接口所在组
+#define RELAY_PIN       GPIO_Pin_11
 
 void Relay_Init(void);
 void Relay_Loop(void); 

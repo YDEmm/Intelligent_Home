@@ -13,6 +13,7 @@ uint8_t STEP;
 
 /**
  * @description: 步进电机接口初始化
+                 PB3  PB4   PB5   PB12
  * @return {*}
  */
 void Step_Motor_Init(void)

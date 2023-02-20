@@ -12,20 +12,20 @@
 
 /**
  * @description: BEEP初始化
- *               BEEP------PC3
+ *               BEEP------PA8
  * @return {*}
  */
 void BEEP_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStruct;
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE); //使能C口时钟
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); //使能A口时钟
     
-    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_3;                //选择管脚1  5
+    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_8;                //选择管脚8
     GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;        //输出速度为50MHZ
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;         //推挽输出
-    //PC3
-    GPIO_Init(GPIOC, &GPIO_InitStruct);
-    GPIO_ResetBits(GPIOC, GPIO_Pin_3);          //设置PC3初始电平为低电平
+    //PA8
+    GPIO_Init(GPIOA, &GPIO_InitStruct);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_8);          //设置PA8初始电平为低电平
 }
 
 

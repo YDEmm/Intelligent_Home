@@ -13,15 +13,15 @@
  * @description: relay初始化
  *               DC+               5V
  *               DC-               GND
- *               IN                PB7
+ *               IN                PA11
  * @return {*}
  */
 void Relay_Init(void) 
 {
     GPIO_InitTypeDef GPIO_InitStruct;
-    RCC_APB2PeriphClockCmd(RELAY_CLK, ENABLE); //使能B口时钟
+    RCC_APB2PeriphClockCmd(RELAY_CLK, ENABLE); //使能A口时钟
     
-    GPIO_InitStruct.GPIO_Pin = RELAY_PIN;                //选择管脚7
+    GPIO_InitStruct.GPIO_Pin = RELAY_PIN;                //选择管脚11
     GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;        //输出速度为50MHZ
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;         //推挽输出
     //PB7

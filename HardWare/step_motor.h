@@ -20,7 +20,7 @@ extern uint8_t STEP;                    //定义单步计数 全局变量
 #define STEP_MOTOR_A				(GPIO_Pin_3)	//定义IO接口
 #define STEP_MOTOR_B				(GPIO_Pin_4)	//定义IO接口
 #define STEP_MOTOR_C				(GPIO_Pin_5)	//定义IO接口
-#define STEP_MOTOR_D				(GPIO_Pin_6)	//定义IO接口
+#define STEP_MOTOR_D				(GPIO_Pin_12)	//定义IO接口
 #define STEP_MOTOR_CLK              (RCC_APB2Periph_GPIOB)
 
 

@@ -10,7 +10,7 @@
 #include "MQ-2.h"
 
 /**
- * @description: GPIO初始化	PA0 ADC1_IN0 模拟输入
+ * @description: GPIO初始化	PA1 ADC1_IN1 模拟输入
  * @return {*}
  */
 void ADC_MQ_2_Init(void)

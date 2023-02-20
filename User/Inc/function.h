@@ -12,6 +12,7 @@
 
 #include "main.h"
 
+void LED_Test(void);
 void DHT11_Test(void);
 void BH1750_Test(void);
 void MQ_2_Test(void);

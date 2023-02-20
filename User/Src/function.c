@@ -9,6 +9,24 @@
  */
 #include "function.h"
 
+
+void LED_Test(void)
+{
+    /*************************虚拟串口连接状态***************************/
+    u8 usbstatus=0;	
+    if(usbstatus!=bDeviceState)//USB连接状态发生了改变.
+    {
+        usbstatus=bDeviceState;//记录新的状态
+        if(usbstatus==CONFIGURED)
+        {
+            LED0_ON;//DS1亮
+        }else
+        {
+            LED0_OFF;//DS1灭
+        }
+    }
+    
+}
 /**
  * @description: DHT11测试函数
  * @return {*}
@@ -44,7 +62,7 @@ void MQ_2_Test(void)
     float Adc_MQ_2 = 0.0;
     Adc_MQ_2 = MQ2_GetPPM();
 
-    printf("smoke:%.2f ppm\n", MQ2_GetPPM());//计算烟雾浓度并通过串口打印
+    printf("smoke:%.2f ppm\n", Adc_MQ_2);//计算烟雾浓度并通过串口打印
     //printf("smoke:%d ppm\n", Get_Adc_Average(ADC_Channel_1,30));//输出模拟量   1---4096   0---0
 }
 

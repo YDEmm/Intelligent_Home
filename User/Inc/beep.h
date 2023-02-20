@@ -12,8 +12,8 @@
 
 #include "stm32f10x.h"                  // Device header
 
-#define BEEP_ON   (GPIO_SetBits(GPIOC, GPIO_Pin_3))
-#define BEEP_OFF    (GPIO_ResetBits(GPIOC, GPIO_Pin_3))
+#define BEEP_ON   (GPIO_SetBits(GPIOA, GPIO_Pin_8))
+#define BEEP_OFF    (GPIO_ResetBits(GPIOA, GPIO_Pin_8))
 
 
 void BEEP_Init(void);
