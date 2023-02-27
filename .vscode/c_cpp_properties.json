@@ -3,17 +3,20 @@
         {
             "name": "Target 1",
             "includePath": [
-                "g:\\JYM\\00jym\\2.Project\\JYM--DHT11\\User\\Inc",
-                "g:\\JYM\\00jym\\2.Project\\JYM--DHT11\\Libraries\\CMSIS\\CM3\\CoreSupport",
-                "g:\\JYM\\00jym\\2.Project\\JYM--DHT11\\Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x",
-                "g:\\JYM\\00jym\\2.Project\\JYM--DHT11\\Libraries\\STM32F10x_StdPeriph_Driver\\inc",
-                "g:\\JYM\\00jym\\2.Project\\JYM--DHT11\\HardWare",
-                "g:\\JYM\\00jym\\2.Project\\JYM--DHT11\\SYSTEM\\sys",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\User\\Inc",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\Libraries\\CMSIS\\CM3\\CoreSupport",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\Libraries\\STM32F10x_StdPeriph_Driver\\inc",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\HardWare",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\SYSTEM\\sys",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\USB\\CONFIG",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\USB\\STM32_USB-FS-Device_Driver\\inc",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
-                "g:\\JYM\\00jym\\2.Project\\JYM--DHT11\\Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x\\startup\\arm",
-                "g:\\JYM\\00jym\\2.Project\\JYM--DHT11\\Libraries\\STM32F10x_StdPeriph_Driver\\src",
-                "g:\\JYM\\00jym\\2.Project\\JYM--DHT11\\User\\Src"
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x\\startup\\arm",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\Libraries\\STM32F10x_StdPeriph_Driver\\src",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\User\\Src",
+                "g:\\JYM\\00jym\\2.Project\\JYM--c8t6\\USB\\STM32_USB-FS-Device_Driver\\src"
             ],
             "defines": [
                 "STM32F10x_MD",

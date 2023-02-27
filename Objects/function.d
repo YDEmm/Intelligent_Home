@@ -65,3 +65,4 @@
 .\objects\function.o: .\USB\CONFIG\usb_pwr.h
 .\objects\function.o: .\HardWare\oled.h
 .\objects\function.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\function.o: .\HardWare\MultiTimer.h

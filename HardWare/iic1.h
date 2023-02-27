@@ -12,7 +12,7 @@
 #include "stm32f10x.h"
 
 #define IIC_SDA  GPIO_Pin_11   //at24c02与GY30进行共用
-#define IIC_CLK  GPIO_Pin_10
+#define IIC_CLK  GPIO_Pin_10 
 #define IIC_GPIO GPIOB
 
 

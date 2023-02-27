@@ -18,11 +18,14 @@
  * GY30:   PB10->SCL SDA->PB11 ADDR->GND
  * MQ-2:    PA1->A0-----模拟量输出接口
  **************************************************/
+
 int main()
 {
-    TIM3_Init(5000, 7200);   //0.5s 进一次中断
-    TIM4_Int_Init(99, 7199);
+    //TIM3_Init(5000, 7200);   //500ms 进一次中断
+    TIM4_Int_Init(10, 7200);   //1ms 进一次中断
+    //SysTick_Config(SystemCoreClock/1000);
     Usart1_Init(115200);
+    
     LED_Init();
     DHT11_Init();
     IIC_Init();
@@ -38,7 +41,7 @@ int main()
  	Set_USBClock();   
  	USB_Interrupts_Config();    
  	USB_Init();	  
-
+    /********************USB虚拟串口**********************/
     OLED_Init();
     OLED_ShowString(10,1,"jym",3);
     OLED_ShowCHinese(10,5,2);   //根据字模的顺序
@@ -48,13 +51,27 @@ int main()
     //Zigbee_send("111\r\n");
     
     
+    
+    
+    /********************MultiTimer定时器**********************/
+    MultiTimerInstall(systick_get);
+    /* 启动定时器 */
+	MultiTimerStart(&tim1, 1000, timer1_callback, "111111111111111");
+	MultiTimerStart(&tim2, 2000, timer2_callback, "222222222222222");
+	MultiTimerStart(&tim3, 3000, timer3_callback, "333333333333333"); 
+    /********************MultiTimer定时器**********************/
     while(1)
     {
 #if 1   
+        MultiTimerYield();//定时器
         //LED_Test();
-        usb_printf("111\r\n\r\n");   //插入换行
+        //DHT11_Test();
+        //MQ_2_Test();
+        //BH1750_Test();
+        //usb_printf("111\r\n\r\n");   //插入换行
         //Step_Motor_Test();
 		//Relay_Loop();
+        
         
         
         

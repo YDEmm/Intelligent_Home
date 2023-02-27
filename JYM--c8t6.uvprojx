@@ -519,6 +519,11 @@
               <FileType>1</FileType>
               <FilePath>.\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f10x_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_it.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -613,6 +618,11 @@
               <FileName>oled.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\HardWare\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>MultiTimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HardWare\MultiTimer.c</FilePath>
             </File>
           </Files>
         </Group>

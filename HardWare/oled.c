@@ -1,3 +1,12 @@
+/*
+ * @Author: JYM
+ * @Date: 2023-02-13 14:55:34
+ * @LastEditTime: 2023-02-27 16:47:11
+ * @LastEditors: JYM
+ * @Description: 
+ * @FilePath: \JYM--c8t6\HardWare\oled.c
+ * 
+ */
 #include "oled.h"
 #include "oledfont.h"
 #include "oledbmp.h"
@@ -13,9 +22,10 @@
 //[6]0 1 2 3 ... 127
 //[7]0 1 2 3 ... 127
 
-/**********************************************
-//IIC Start
-**********************************************/
+/**
+ * @description: IIC Start
+ * @return {*}
+ */
 void OLED_IIC_Start(void)
 {
 
@@ -25,9 +35,10 @@ void OLED_IIC_Start(void)
 	OLED_SCLK_Clr();
 }
 
-/**********************************************
-//IIC Stop
-**********************************************/
+/**
+ * @description: IIC Stop
+ * @return {*}
+ */
 void OLED_IIC_Stop(void)
 {
 	OLED_SCLK_Set();
@@ -36,15 +47,21 @@ void OLED_IIC_Stop(void)
 	OLED_SDIN_Set();
 }
 
+/**
+ * @description: OLED_IIC_Wait_Ack
+ * @return {*}
+ */
 void OLED_IIC_Wait_Ack(void)
 {
 	OLED_SCLK_Set();
 	OLED_SCLK_Clr();
 }
-/**********************************************
-// IIC Write byte
-**********************************************/
 
+/**
+ * @description: IIC Write byte
+ * @param {unsigned char} IIC_Byte
+ * @return {*}
+ */
 void Write_IIC_Byte(unsigned char IIC_Byte)
 {
 	unsigned char i;
@@ -67,9 +84,12 @@ void Write_IIC_Byte(unsigned char IIC_Byte)
 		OLED_SCLK_Clr();
 	}
 }
-/**********************************************
-// IIC Write Command
-**********************************************/
+
+/**
+ * @description: IIC Write Command
+ * @param {unsigned char} IIC_Command
+ * @return {*}
+ */
 void Write_IIC_Command(unsigned char IIC_Command)
 {
 	OLED_IIC_Start();
@@ -81,9 +101,12 @@ void Write_IIC_Command(unsigned char IIC_Command)
 	OLED_IIC_Wait_Ack();
 	OLED_IIC_Stop();
 }
-/**********************************************
-// IIC Write Data
-**********************************************/
+
+/**
+ * @description: IIC Write Data
+ * @param {unsigned char} IIC_Data
+ * @return {*}
+ */
 void Write_IIC_Data(unsigned char IIC_Data)
 {
 	OLED_IIC_Start();
@@ -96,6 +119,12 @@ void Write_IIC_Data(unsigned char IIC_Data)
 	OLED_IIC_Stop();
 }
 
+/**
+ * @description: OLED_WR_Byte
+ * @param {unsigned} dat
+ * @param {unsigned} cmd
+ * @return {*}
+ */
 void OLED_WR_Byte(unsigned dat, unsigned cmd)
 {
 	if (cmd)
@@ -104,9 +133,11 @@ void OLED_WR_Byte(unsigned dat, unsigned cmd)
 		Write_IIC_Command(dat);
 }
 
-/********************************************
-// fill_Picture
-********************************************/
+/**
+ * @description: fill_Picture
+ * @param {unsigned char} fill_Data
+ * @return {*}
+ */
 void fill_picture(unsigned char fill_Data)
 {
 	unsigned char m, n;
@@ -122,28 +153,45 @@ void fill_picture(unsigned char fill_Data)
 	}
 }
 
-//坐标设置
+/**
+ * @description: OLED_Set_Pos 坐标设置
+ * @param {unsigned char} x
+ * @param {unsigned char} y
+ * @return {*}
+ */
 void OLED_Set_Pos(unsigned char x, unsigned char y)
 {
 	OLED_WR_Byte(0xb0 + y, OLED_CMD);
 	OLED_WR_Byte(((x & 0xf0) >> 4) | 0x10, OLED_CMD);
 	OLED_WR_Byte((x & 0x0f), OLED_CMD);
 }
-//开启OLED显示
+
+/**
+ * @description: OLED_Display_On 开启OLED显示
+ * @return {*}
+ */
 void OLED_Display_On(void)
 {
 	OLED_WR_Byte(0X8D, OLED_CMD); //SET DCDC命令
 	OLED_WR_Byte(0X14, OLED_CMD); //DCDC ON
 	OLED_WR_Byte(0XAF, OLED_CMD); //DISPLAY ON
 }
-//关闭OLED显示
+
+/**
+ * @description: OLED_Display_Off  关闭OLED显示
+ * @return {*}
+ */
 void OLED_Display_Off(void)
 {
 	OLED_WR_Byte(0X8D, OLED_CMD); //SET DCDC命令
 	OLED_WR_Byte(0X10, OLED_CMD); //DCDC OFF
 	OLED_WR_Byte(0XAE, OLED_CMD); //DISPLAY OFF
 }
-//清屏函数,清完屏,整个屏幕是黑色的!和没点亮一样!!!
+
+/**
+ * @description: OLED_Clear  清屏函数,清完屏,整个屏幕是黑色的!和没点亮一样!!!
+ * @return {*}
+ */
 void OLED_Clear(void)
 {
 	u8 i, n;
@@ -156,6 +204,10 @@ void OLED_Clear(void)
 			OLED_WR_Byte(0, OLED_DATA);
 	} //更新显示
 }
+/**
+ * @description: OLED_On
+ * @return {*}
+ */
 void OLED_On(void)
 {
 	u8 i, n;
@@ -169,11 +221,14 @@ void OLED_On(void)
 	} //更新显示
 }
 
-//在指定位置显示一个字符,包括部分字符
-//x:0~127
-//y:0~63
-//mode:0,反白显示;1,正常显示
-//size:选择字体 16/12
+/**
+ * @description: OLED_ShowChar  在指定位置显示一个字符,包括部分字符
+ * @param {u8} x  x:0~127
+ * @param {u8} y  y:0~63
+ * @param {u8} chr  mode:0,反白显示;1,正常显示
+ * @param {u8} Char_Size  size:选择字体 16/12
+ * @return {*}
+ */
 void OLED_ShowChar(u8 x, u8 y, u8 chr, u8 Char_Size)
 {
 	unsigned char c = 0, i = 0;
@@ -200,7 +255,13 @@ void OLED_ShowChar(u8 x, u8 y, u8 chr, u8 Char_Size)
 			OLED_WR_Byte(F6x8[c][i], OLED_DATA);
 	}
 }
-//m^n函数
+
+/**
+ * @description:  oled_pow  m^n函数
+ * @param {u8} m
+ * @param {u8} n
+ * @return {*}
+ */
 u32 oled_pow(u8 m, u8 n)
 {
 	u32 result = 1;

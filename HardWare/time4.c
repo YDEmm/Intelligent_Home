@@ -1,6 +1,31 @@
+/*
+ * @Author: JYM
+ * @Date: 2023-02-11 09:16:05
+ * @LastEditTime: 2023-02-27 16:41:38
+ * @LastEditors: JYM
+ * @Description: 
+ * @FilePath: \JYM--c8t6\HardWare\time4.c
+ * 
+ */
 #include "time4.h"
 
 
+/**
+ * @description: TIM4_Int_Init
+ * @param {u16} arr
+ * @param {u16} psc
+ * @return {*}
+ * 说明：
+ * 时间（s） = 计数周期（arr） / 计数频率
+ * 计数频率 = 时钟周期(hz) / 预分频系数(psc)
+ * 1MHZ = 1000 000HZ
+ * 计数频率 = 72000 000hz / psc
+ * 1s = arr/计数频率
+ * 计数频率= 72000000h/7200
+ * 1s = arr/10000
+ * psc = 7200
+ * arr = 10000
+ */
 void TIM4_Int_Init(u16 arr, u16 psc)
 
 {
@@ -39,27 +64,31 @@ void TIM4_Int_Init(u16 arr, u16 psc)
 	
 }
 
+extern void systick_run(void);
 void TIM4_IRQHandler(void)
 {		
 	if (TIM_GetITStatus(TIM4, TIM_IT_Update) != RESET)              //判断是否发生中断
 	{
 		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);					//清除标志	 		
-		if(Zigbee_Rec.Rec_Start == RECSTART)		//接收数据 开启计时
-		{			
-			Zigbee_Rec.Rec_Time++;					// 时间累加			
-			if(Zigbee_Rec.Rec_Time > Zigbee_Rec.Rec_Timeflag)
-			{
-				Zigbee_Rec.Rec_End = RECEND;
-				Zigbee_Rec.Rec_Start = RECNOSTART;				
-				printf("TIM4_IRQHandler %s\r\n",Zigbee_Rec.Rec_String);							
-				Zigbee_Rec.Rec_Time = 0; //清空时间
-				//后续处理字符串				
-			}					
-		}
-		if(Zigbee_Rec.Wait_Flag == 1)
-		{
-			Zigbee_Rec.Wait_Time++;
-		}			
+//		if(Zigbee_Rec.Rec_Start == RECSTART)		//接收数据 开启计时
+//		{			
+//			Zigbee_Rec.Rec_Time++;					// 时间累加			
+//			if(Zigbee_Rec.Rec_Time > Zigbee_Rec.Rec_Timeflag)
+//			{
+//				Zigbee_Rec.Rec_End = RECEND;
+//				Zigbee_Rec.Rec_Start = RECNOSTART;				
+//				printf("TIM4_IRQHandler %s\r\n",Zigbee_Rec.Rec_String);							
+//				Zigbee_Rec.Rec_Time = 0; //清空时间
+//				//后续处理字符串				
+//			}					
+//		}
+//		if(Zigbee_Rec.Wait_Flag == 1)
+//		{
+//			Zigbee_Rec.Wait_Time++;
+//		}
+
+        /*********MultiTimer定时器**********/
+        systick_run();
 	}
 }
 
