@@ -13,7 +13,7 @@
 #include "stm32f10x.h"                  // Device header
 
 
-extern uint8_t times;
+
 
 void TIM3_Init(u16 arr,u16 psc);
 

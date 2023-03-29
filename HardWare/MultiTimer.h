@@ -24,6 +24,8 @@
 #define _MULTI_TIMER_H_
 
 #include <stdint.h>
+#include <stdio.h>
+#include <stdbool.h>
 
 #ifdef __cplusplus  
 extern "C" {  
@@ -80,10 +82,14 @@ int MultiTimerYield(void);
 extern uint64_t systick;
 uint64_t systick_get(void);
 /* 创建一个定时器对象 */
-extern MultiTimer tim1,tim2,tim3; 
+extern MultiTimer tim1,tim2,tim3,tim4; 
+extern bool RefreshFlage;
 /* 定义定时器超时回调函数 */
 void timer1_callback(MultiTimer* timer, void* userData);
 void timer2_callback(MultiTimer* timer, void* userData);
+
+extern uint8_t times;
+
 void timer3_callback(MultiTimer* timer, void* userData);
             
 #ifdef __cplusplus

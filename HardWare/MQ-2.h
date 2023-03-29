@@ -4,7 +4,8 @@
 #include "stm32f10x.h"   // Device header
 #include "math.h"
 #include "Systic.h"
-#include "time3.h"
+#include "MultiTimer.h"
+
 
 
 #define CAL_PPM 20  // 校准环境中PPM值

@@ -8,9 +8,13 @@
  * 
  */
 #include "MultiTimer.h"
-#include <stdio.h>
+//#include "usb_lib.h"
+//#include "hw_config.h"
+//#include "usb_pwr.h"
+#include "string.h"
+#include "zigbee.h"
 
-
+#include "oled.h"
 /* Timer handle list head. */
 static MultiTimer* timerList = NULL;
 
@@ -106,22 +110,45 @@ uint64_t systick_get(void)
     return systick;
 }
 /* 创建一个定时器对象 */
-MultiTimer tim1,tim2,tim3;
+MultiTimer tim1,tim2,tim3,tim4;
 /* 定义定时器超时回调函数 */
+
+bool RefreshFlage = false;
 void timer1_callback(MultiTimer* timer, void* userData)
 {
-	printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
-	MultiTimerStart(&tim1, 1000, timer1_callback, "111111111111111");
+    //if(RefreshFlage)OLEDUserUpdata();
+
+	//usb_printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
+    if(Zigbee_Rec.Rec_Start == RECSTART)		//接收数据 开启计时
+		{			
+			Zigbee_Rec.Rec_Time++;					// 时间累加			
+			if(Zigbee_Rec.Rec_Time > Zigbee_Rec.Rec_Timeflag)
+			{
+				Zigbee_Rec.Rec_Finsh = RECEND;
+				Zigbee_Rec.Rec_Start = RECNOSTART;				
+				Zigbee_Rec.Rec_Time = 0; //清空时间
+				//后续处理字符串				
+			}					
+		}
+		if(Zigbee_Rec.Wait_Flag == 1)
+		{
+			Zigbee_Rec.Wait_Time++;
+		}
+	MultiTimerStart(&tim1, 10, timer1_callback, "ZigBee_Recvice");
 }
 void timer2_callback(MultiTimer* timer, void* userData)
 {
-	printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
-	MultiTimerStart(&tim2, 2000, timer2_callback, "222222222222222");
-}
-void timer3_callback(MultiTimer* timer, void* userData)
-{
-	printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
-	MultiTimerStart(&tim3, 3000, timer3_callback, "333333333333333");	
+    ZigBee_Send_Flag = 1;   //标志位置1  zigbee两秒发送一次
+	//usb_printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
+	MultiTimerStart(&tim2, 20, timer2_callback, "ZigBee_Send");
 }
 
+uint8_t times = 0;
+
+void timer3_callback(MultiTimer* timer, void* userData)
+{
+    times++;
+	//usb_printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
+	MultiTimerStart(&tim3, 500, timer3_callback, "MQ_2");	
+}
 

@@ -30,3 +30,4 @@
 .\objects\relay.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\relay.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\relay.o: HardWare\Systic.h
+.\objects\relay.o: .\SYSTEM\sys\io_bit(m3).h

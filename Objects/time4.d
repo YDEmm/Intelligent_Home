@@ -33,10 +33,5 @@
 .\objects\time4.o: .\SYSTEM\sys\io_bit(m3).h
 .\objects\time4.o: HardWare\time4.h
 .\objects\time4.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\time4.o: .\USB\CONFIG\hw_config.h
-.\objects\time4.o: .\USB\CONFIG\platform_config.h
-.\objects\time4.o: .\SYSTEM\sys\sys.h
-.\objects\time4.o: .\USB\STM32_USB-FS-Device_Driver\inc\usb_type.h
-.\objects\time4.o: .\USB\CONFIG\usb_conf.h
 .\objects\time4.o: HardWare\systic.h
 .\objects\time4.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

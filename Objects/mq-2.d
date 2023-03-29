@@ -31,4 +31,6 @@
 .\objects\mq-2.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\mq-2.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\mq-2.o: HardWare\Systic.h
-.\objects\mq-2.o: HardWare\time3.h
+.\objects\mq-2.o: HardWare\MultiTimer.h
+.\objects\mq-2.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\mq-2.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

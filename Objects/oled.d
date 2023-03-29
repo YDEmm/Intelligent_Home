@@ -31,6 +31,5 @@
 .\objects\oled.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\oled.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\oled.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\oled.o: HardWare\Systic.h
 .\objects\oled.o: HardWare\oledfont.h
-.\objects\oled.o: HardWare\oledbmp.h
+.\objects\oled.o: HardWare\Systic.h

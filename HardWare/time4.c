@@ -70,23 +70,6 @@ void TIM4_IRQHandler(void)
 	if (TIM_GetITStatus(TIM4, TIM_IT_Update) != RESET)              //判断是否发生中断
 	{
 		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);					//清除标志	 		
-//		if(Zigbee_Rec.Rec_Start == RECSTART)		//接收数据 开启计时
-//		{			
-//			Zigbee_Rec.Rec_Time++;					// 时间累加			
-//			if(Zigbee_Rec.Rec_Time > Zigbee_Rec.Rec_Timeflag)
-//			{
-//				Zigbee_Rec.Rec_End = RECEND;
-//				Zigbee_Rec.Rec_Start = RECNOSTART;				
-//				printf("TIM4_IRQHandler %s\r\n",Zigbee_Rec.Rec_String);							
-//				Zigbee_Rec.Rec_Time = 0; //清空时间
-//				//后续处理字符串				
-//			}					
-//		}
-//		if(Zigbee_Rec.Wait_Flag == 1)
-//		{
-//			Zigbee_Rec.Wait_Time++;
-//		}
-
         /*********MultiTimer定时器**********/
         systick_run();
 	}
