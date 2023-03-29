@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "led.h": "c",
+        "beep.h": "c",
+        "key.h": "c",
+        "systic.h": "c",
+        "usart.h": "c",
+        "dht11.h": "c",
+        "iic1.h": "c",
+        "gy30.h": "c",
+        "time3.h": "c",
+        "step_motor.h": "c",
+        "function.h": "c",
+        "relay.h": "c"
+    }
+}
