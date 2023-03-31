@@ -9,6 +9,8 @@
  */
 #include "MultiTimer.h"
 #include <stdio.h>
+#include "ZigBee_UART3.h"
+#include "UART4_Lcd.h"
 
 
 /* Timer handle list head. */
@@ -107,21 +109,50 @@ uint64_t systick_get(void)
 }
 /* 创建一个定时器对象 */
 MultiTimer tim1,tim2,tim3;
+int Zibgbee_sendtime = 0;
 /* 定义定时器超时回调函数 */
 void timer1_callback(MultiTimer* timer, void* userData)
 {
-	printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
-	MultiTimerStart(&tim1, 1000, timer1_callback, "111111111111111");
+	//usb_printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
+//    if(Zigbee_Rec.Rec_Start == RECSTART)		//接收数据 开启计时
+//		{			
+//			Zigbee_Rec.Rec_Time++;					// 时间累加			
+//			if(Zigbee_Rec.Rec_Time > Zigbee_Rec.Rec_Timeflag)
+//			{
+//				Zigbee_Rec.Rec_Finsh = RECEND;
+//				Zigbee_Rec.Rec_Start = RECNOSTART;				
+//				Zigbee_Rec.Rec_Time = 0; //清空时间
+//				//后续处理字符串				
+//			}					
+//		}
+//		if(Zigbee_Rec.Wait_Flag == 1)
+//		{
+//			Zigbee_Rec.Wait_Time++;
+//		}
+    Zibgbee_sendtime++;
+    if(Lcd_Rec.Rec_Start == 1)        //收到第一帧数据 开始计时等待
+    {
+        Lcd_Rec.Rec_Time++;
+        if(Lcd_Rec.Rec_Time > Lcd_Rec.Rec_Timeflag)
+        {
+            Lcd_Rec.Rec_Finsh = 1; //超时未收到消息 结束标志
+        }
+    }			
+	MultiTimerStart(&tim1, 10, timer1_callback, "ZigBee_Recvice");
 }
 void timer2_callback(MultiTimer* timer, void* userData)
 {
-	printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
-	MultiTimerStart(&tim2, 2000, timer2_callback, "222222222222222");
+    ZigBee_Send_Flag = 1;   //标志位置1  zigbee两秒发送一次
+	//usb_printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
+	MultiTimerStart(&tim2, 2000, timer2_callback, "ZigBee_printf");
 }
-void timer3_callback(MultiTimer* timer, void* userData)
-{
-	printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
-	MultiTimerStart(&tim3, 3000, timer3_callback, "333333333333333");	
-}
+
+//uint8_t times = 0;
+//void timer3_callback(MultiTimer* timer, void* userData)
+//{
+//    times++;
+//	//usb_printf("%s:%s\r\n",__FUNCTION__,(char *)userData);
+//	MultiTimerStart(&tim3, 500, timer3_callback, "MQ_2");	
+//}
 
 

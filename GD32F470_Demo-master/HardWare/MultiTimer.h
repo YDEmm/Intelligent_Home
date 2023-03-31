@@ -82,9 +82,11 @@ uint64_t systick_get(void);
 /* 创建一个定时器对象 */
 extern MultiTimer tim1,tim2,tim3; 
 /* 定义定时器超时回调函数 */
+extern int Zibgbee_sendtime;
 void timer1_callback(MultiTimer* timer, void* userData);
+
 void timer2_callback(MultiTimer* timer, void* userData);
-void timer3_callback(MultiTimer* timer, void* userData);
+//void timer3_callback(MultiTimer* timer, void* userData);
             
 #ifdef __cplusplus
 } 
