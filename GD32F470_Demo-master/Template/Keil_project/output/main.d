@@ -53,4 +53,5 @@
 .\output\main.o: ..\..\HardWare\UART4_Lcd.h
 .\output\main.o: ..\..\HardWare\ESP8266.h
 .\output\main.o: ..\..\HardWare\IrDA.h
+.\output\main.o: ..\..\HardWare\ESP32_CAM.h
 .\output\main.o: ..\function.h

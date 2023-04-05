@@ -39,3 +39,8 @@
 .\output\key.o: ..\..\Firmware\GD32F4xx_standard_peripheral\Include\gd32f4xx_exmc.h
 .\output\key.o: ..\..\Firmware\GD32F4xx_standard_peripheral\Include\gd32f4xx_ipa.h
 .\output\key.o: ..\..\Firmware\GD32F4xx_standard_peripheral\Include\gd32f4xx_tli.h
+.\output\key.o: ..\..\Template\systick.h
+.\output\key.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\key.o: ..\..\HardWare\LED.h
+.\output\key.o: ..\..\HardWare\ESP8266.h
+.\output\key.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

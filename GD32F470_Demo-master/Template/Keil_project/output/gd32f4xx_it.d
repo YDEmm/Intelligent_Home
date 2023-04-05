@@ -54,3 +54,4 @@
 .\output\gd32f4xx_it.o: ..\..\HardWare\UART4_Lcd.h
 .\output\gd32f4xx_it.o: ..\..\HardWare\ESP8266.h
 .\output\gd32f4xx_it.o: ..\..\HardWare\IrDA.h
+.\output\gd32f4xx_it.o: ..\..\HardWare\ESP32_CAM.h

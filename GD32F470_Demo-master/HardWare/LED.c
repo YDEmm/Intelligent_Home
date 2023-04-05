@@ -33,7 +33,7 @@ void  gd_eval_led_init (led_typedef_enum lednum)
 */
 void gd_eval_led_on(led_typedef_enum lednum)
 {
-    GPIO_BOP(GPIO_PORT[lednum]) = GPIO_PIN[lednum];
+    GPIO_BC(GPIO_PORT[lednum]) = GPIO_PIN[lednum];
 }
 
 /*!
@@ -46,7 +46,7 @@ void gd_eval_led_on(led_typedef_enum lednum)
 */
 void gd_eval_led_off(led_typedef_enum lednum)
 {
-    GPIO_BC(GPIO_PORT[lednum]) = GPIO_PIN[lednum];
+    GPIO_BOP(GPIO_PORT[lednum]) = GPIO_PIN[lednum];
 }
 
 /*!

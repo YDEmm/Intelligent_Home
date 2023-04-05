@@ -31,7 +31,13 @@ extern ESP8266_Type ESP8266_Buff;
 
 void UART6_ESP8266_Init(uint32_t com);
 void Send_ESP8266_String(uint8_t *str);
-
+int ESP8266_SendCmd(char* cmd, char* reply, int wait);
+int ESP8266_Init(void);
+uint8_t ESP32ConnetWIFI(uint8_t *ssid,uint8_t *pwd);
+uint8_t ESP32ConnetServer(uint8_t* tppe,uint8_t *remote_ip,uint8_t *remote_port);
+void ExitPassThroughMode(void);
+uint8_t ESP32Restore(void);
+uint8_t ESP8266TcpInit(void);
 
 #endif   //__ESP8266_H__
 

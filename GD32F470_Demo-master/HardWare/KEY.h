@@ -12,7 +12,8 @@ typedef enum
 {
     KEY_WAKEUP = 0,
     KEY_TAMPER = 1,
-    KEY_USER = 2
+    KEY1_USER = 2,
+    KEY2_USER = 3
 } key_typedef_enum;
 
 typedef enum 
@@ -59,12 +60,14 @@ typedef enum
 #define USER_KEY1_EXTI_IRQn               EXTI1_IRQn
   
 /* function declarations */
+extern int KEY1_Flag;
+extern int KEY2_Flag;
 /* configure key */
 void gd_eval_key_init(key_typedef_enum key_num, keymode_typedef_enum key_mode);
 /* return the selected button state */
 uint8_t gd_eval_key_state_get(key_typedef_enum button);
 
-
+void Key_Control(void);
 
 #ifdef __cplusplus
 }

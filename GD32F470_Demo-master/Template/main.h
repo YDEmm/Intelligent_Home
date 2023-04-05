@@ -12,7 +12,7 @@
 #include "UART4_Lcd.h"
 #include "ESP8266.h"
 #include "IrDA.h"
-
+#include "ESP32_CAM.h"
 /* led spark function */
 void led_spark(void);
 

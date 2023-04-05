@@ -1,5 +1,8 @@
 #include "KEY.h"
-
+#include "systick.h"
+#include <string.h>
+#include "LED.h"
+#include "ESP8266.h"
 /* private variables */
 
 static uint32_t KEY_PORT[KEYn] = {WAKEUP_KEY_GPIO_PORT, 
@@ -35,12 +38,14 @@ static uint8_t KEY_IRQn[KEYn] = {WAKEUP_KEY_EXTI_IRQn,
 */
 void gd_eval_key_init(key_typedef_enum key_num, keymode_typedef_enum key_mode)
 {
+
     /* enable the key clock */
-    rcu_periph_clock_enable(KEY_CLK[key_num]);
-    rcu_periph_clock_enable(RCU_SYSCFG);
+
+    rcu_periph_clock_enable(KEY_CLK[key_num]);   //开IO时钟
+    rcu_periph_clock_enable(RCU_SYSCFG);         //外部中断时钟
 
     /* configure button pin as input */
-    gpio_mode_set(KEY_PORT[key_num], GPIO_MODE_INPUT, GPIO_PUPD_NONE,KEY_PIN[key_num]);
+    gpio_mode_set(KEY_PORT[key_num], GPIO_MODE_INPUT, GPIO_PUPD_PULLUP,KEY_PIN[key_num]);  //上拉输入
 
     if (key_mode == KEY_MODE_EXTI) {
         /* enable and set key EXTI interrupt to the lowest priority */
@@ -68,4 +73,51 @@ uint8_t gd_eval_key_state_get(key_typedef_enum button)
 {
     return gpio_input_bit_get(KEY_PORT[button], KEY_PIN[button]);
 }
+
+int KEY1_Flag = 0;
+void  EXTI0_IRQHandler(void)
+{
+    if(RESET != exti_interrupt_flag_get(EXTI_0)){
+       /*--------以下放入中断响应函数---------*/ 
+        KEY1_Flag = 1;
+ 
+    }
+    exti_interrupt_flag_clear(EXTI_0);
+}
+int KEY2_Flag = 0;
+void  EXTI1_IRQHandler(void)
+{
+    if(RESET != exti_interrupt_flag_get(EXTI_1)){
+       /*--------以下放入中断响应函数---------*/ 
+        KEY2_Flag = 1;
+ 
+    }
+    exti_interrupt_flag_clear(EXTI_1);
+    
+}
+void Key_Control(void)
+{
+	if(KEY1_Flag == 1)  
+    {
+        gd_eval_led_on(LED2);
+        delay_1ms(1000);
+        KEY1_Flag = 0;  //清除标志位
+    }
+    else
+    {
+        gd_eval_led_off(LED2);
+    }
+    if(KEY2_Flag == 1)
+    {
+        gd_eval_led_on(LED1);
+        ESP8266_SendCmd("AT+CIPCLOSE\r\n","OK\r\n",1000);//断开连接
+        delay_1ms(1000);
+        KEY2_Flag = 0;  //清除标志位
+    }
+    else
+    {
+        gd_eval_led_off(LED1);
+    }
+}
+
 

@@ -53,3 +53,4 @@
 .\output\timer.o: ..\..\HardWare\UART4_Lcd.h
 .\output\timer.o: ..\..\HardWare\ESP8266.h
 .\output\timer.o: ..\..\HardWare\IrDA.h
+.\output\timer.o: ..\..\HardWare\ESP32_CAM.h

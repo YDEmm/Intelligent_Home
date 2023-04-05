@@ -51,7 +51,7 @@ void UART4_Lcd_Init(uint32_t com)
 /* 串口发送一个字节 */
 static void UART4_Send_Byte(uint8_t ch)
 {
-    //发送一个字节数据到USART0
+    //发送一个字节数据到USART4
     usart_data_transmit(UART4,ch);
     
     //等待发送完毕

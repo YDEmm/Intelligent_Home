@@ -40,3 +40,5 @@
 .\output\esp8266.o: ..\..\Firmware\GD32F4xx_standard_peripheral\Include\gd32f4xx_ipa.h
 .\output\esp8266.o: ..\..\Firmware\GD32F4xx_standard_peripheral\Include\gd32f4xx_tli.h
 .\output\esp8266.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\esp8266.o: ..\..\Template\systick.h
+.\output\esp8266.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

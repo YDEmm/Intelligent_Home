@@ -639,6 +639,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\HardWare\IrDA.c</FilePath>
             </File>
+            <File>
+              <FileName>ESP32_CAM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\HardWare\ESP32_CAM.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
